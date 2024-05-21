@@ -4,6 +4,8 @@
     "build": "node scripts/build.mjs",
     "build:dev": "node scripts/build.mjs --dev",
     "dev": "http-server dist --port 8731",
+    "styles": "prettier . --check",
+    "styles:fix": "prettier . --write",
     "watch:defs": "node scripts/watch_defs.mjs"
   },
   "dependencies": {
@@ -17,6 +19,7 @@
     "rollup": "^4.17.2",
     "rollup-plugin-esbuild": "^6.1.1",
     "rollup-plugin-tsconfig-paths": "^1.5.2",
+    "prettier": "^3.2.5",
     "smol-toml": "^1.1.4"
   },
   "devDependencies": {
