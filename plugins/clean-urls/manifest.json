@@ -1,0 +1,14 @@
+{
+  "name": "Clean URLs",
+  "description": "Removes tracking data garbage from links (Vencord port)",
+  "authors": [
+    {
+      "name": "claracrazy",
+      "id": "853550207039832084"
+    }
+  ],
+  "main": "src/index.ts",
+  "vendetta": {
+    "icon": "ic_link"
+  }
+}
