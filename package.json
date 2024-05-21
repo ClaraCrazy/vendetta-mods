@@ -1,7 +1,7 @@
 {
 	"private": true,
 	"scripts": {
-		"build": "node build.mjs"
+		"build": "node scripts/build.mjs"
 	},
 	"dependencies": {
 		"@swc/helpers": "^0.4.14"
