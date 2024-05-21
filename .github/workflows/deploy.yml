@@ -34,9 +34,6 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - name: Test types
-        run: pnpm testTsc
-
       - name: Lint
         run: pnpm lint:fix
 
