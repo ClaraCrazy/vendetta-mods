@@ -1,6 +1,6 @@
 export default {
   github: {
-    url: "https://github.com/nexpid/DettaPlugins/",
-    raw: "https://raw.githubusercontent.com/nexpid/DettaPlugins/main/",
+    url: "https://github.com/claracrazy/vendetta-mods/",
+    raw: "https://raw.githubusercontent.com/claracrazy/vendetta-mods/main/",
   },
 };
