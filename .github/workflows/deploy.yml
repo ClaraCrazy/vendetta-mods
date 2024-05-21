@@ -68,6 +68,7 @@ jobs:
           node-version: "18"
           cache: "pnpm"
 
+      - run: npm install --global pnpm
       - run: pnpm install --frozen-lockfile
 
       - name: Build plugins
