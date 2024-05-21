@@ -15,7 +15,7 @@
     <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/claracrazy/vendetta-mods?style=for-the-badge&color=a6e3a1&labelColor=1e1e2e&logo=saucelabs&logoColor=fff">
   </a>
   <a href="https://discord.gg/crazyco">
-    <img alt="Discord members" src="https://img.shields.io/discord/1196075698301968455?style=for-the-badge&color=eba0ac&labelColor=1e1e2e&logo=discord&logoColor=fff">
+    <img alt="Discord members" src="https://img.shields.io/discord/1170315072162250812?style=for-the-badge&color=eba0ac&labelColor=1e1e2e&logo=discord&logoColor=fff">
   </a>
 </div>
 <br/>
