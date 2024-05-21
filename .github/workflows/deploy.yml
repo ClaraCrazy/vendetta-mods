@@ -1,4 +1,4 @@
-name: CI, Build and deploy
+name: Build and deploy
 
 on:
   push:
@@ -8,7 +8,6 @@ on:
       - scripts/build.mjs
       - plugins/*/manifest.json
       - plugins/*/src/**/*.*
-      - stuff/**/*.*
   workflow_dispatch:
 
 concurrency:
@@ -16,44 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  ci:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 9
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "21"
-          cache: "pnpm"
-
-      - run: pnpm install --frozen-lockfile
-
-      - name: Lint
-        run: pnpm lint:fix
-
-      - name: Styles
-        run: pnpm styles:fix
-
-      - name: Publish changes
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add .
-
-          git commit -m "chore: ci" || true
-
-          git pull
-          git push
   build:
-    needs: ci
-
     runs-on: ubuntu-latest
     permissions:
       contents: write
