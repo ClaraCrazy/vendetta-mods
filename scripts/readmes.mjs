@@ -29,7 +29,6 @@ const mdNote = `<!--
 const statusColors = {
   unfinished: "#9399b2",
   finished: "#a6e3a1",
-  discontinued: "#f38ba8",
 };
 const shieldLabelColor = "#1e1e2e".slice(1);
 const shieldColors = {
@@ -48,7 +47,6 @@ const shieldLogos = {
 const categories = [
   ["✅ Finished", "finished"],
   ["❌ Unfinished", "unfinished"],
-  ["🎫 Discontinued", "discontinued"],
 ];
 
 const makeBadge = (label, text, textColor) =>
@@ -81,14 +79,13 @@ for (const x of await readdir("./plugins")) {
 
   try {
     const manifest = JSON.parse(await readFile(`${path}manifest.json`, "utf8"));
-    const { status, proxied, usable, discontinuedFor, external } = parse(
+    const { status, proxied, usable, external } = parse(
       await readFile(`${path}status.toml`, "utf8"),
     );
 
     const plugin = {
       name: manifest.name,
       description: manifest.description,
-      discontinuedFor,
       id: x,
       status,
       proxied,
@@ -165,8 +162,6 @@ const stats = {
     .length,
   unfinished: plugins.filter((x) => x.status === "unfinished" && !x.proxied)
     .length,
-  discontinued: plugins.filter((x) => x.status === "discontinued" && !x.proxied)
-    .length,
 };
 
 const plur = (x, p = "s", s = "") => (x !== 1 ? p : s);
@@ -177,17 +172,15 @@ const chart = {
     labels: [
       stats.finished > 0 && "Finished",
       stats.unfinished > 0 && "Unfinished",
-      stats.discontinued > 0 && "Discontinued",
     ].filter((x) => !!x),
     datasets: [
       {
-        data: [stats.finished, stats.unfinished, stats.discontinued].filter(
+        data: [stats.finished, stats.unfinished].filter(
           (x) => x > 0,
         ),
         backgroundColor: [
           stats.finished > 0 && statusColors.finished,
           stats.unfinished > 0 && statusColors.unfinished,
-          stats.discontinued > 0 && statusColors.discontinued,
         ].filter((x) => !!x),
         datalabels: {
           labels: {
@@ -290,11 +283,7 @@ const plist = categories
       `### ${status}\n\n${plugins
         .map(
           (y) =>
-            `- ${y.name} — ${y.description}${
-              y.discontinuedFor
-                ? `\n  - **Discontinued For:** ${y.discontinuedFor}`
-                : ""
-            }\n  - ${[y.links.copy, y.links.code, ...y.links.external]
+            `- ${y.name} — ${y.description}$\n  - ${[y.links.copy, y.links.code, ...y.links.external]
               .filter((z) => !!z)
               .map((z) => makeMDHrefBadge(z.link, z.title))
               .join(" ")}`,
@@ -331,12 +320,12 @@ const mreadme = `${mdNote}
   <h1>💮 Vendetta Plugin Modifications</h1>
 </div>
 
-My plugins assume you're using version atleast **211.10** (211210) from **January 1st**, they might not work properly if you use an older version than that.
+The plugins I modified assume you're using version atleast **211.10** (211210) from **January 1st**, they might not work properly if you use an older version than that.
 
 ## 📊 Stats
 
 I've modified a total of **${stats.all}** plugin${plur(stats.all)}.  
-Out of the plugins I've coded, **${stats.finished}** ${plur(
+Out of the plugins I've modified, **${stats.finished}** ${plur(
   stats.finished,
   "are finished",
   "is finished",
