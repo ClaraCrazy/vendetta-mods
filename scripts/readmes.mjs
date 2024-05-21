@@ -322,7 +322,7 @@ const mreadme = `${mdNote}
   )}
   ${makeHref(
     "https://discord.gg/crazyco",
-    `<img alt="Discord members" src="https://img.shields.io/discord/1196075698301968455?style=for-the-badge&color=${shieldColors.discord}&labelColor=${shieldLabelColor}&logo=${shieldLogos.discord}">`,
+    `<img alt="Discord members" src="https://img.shields.io/discord/1170315072162250812?style=for-the-badge&color=${shieldColors.discord}&labelColor=${shieldLabelColor}&logo=${shieldLogos.discord}">`,
     1,
   )}
 </div>
