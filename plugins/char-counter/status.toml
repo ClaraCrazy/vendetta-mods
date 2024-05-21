@@ -1,2 +1,2 @@
-status = "finished"
-proxied = false
+status = "unfinished"
+proxied = true
