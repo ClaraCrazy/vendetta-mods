@@ -51,7 +51,7 @@ const styles = stylesheet.createThemedStyleSheet({
 });
 
 export default ({ inputProps }: { inputProps: any }) => {
-  const [isToggled, setIsToggled] = React.useState(false);
+  const [isToggled, setIsToggled] = React.useState(true);
   const [text, setText] = React.useState("");
 
   const fade = Reanimated.useSharedValue(vstorage.minChars === 0 ? 1 : 0);
@@ -93,7 +93,7 @@ export default ({ inputProps }: { inputProps: any }) => {
           zIndex: 1,
         },
         {
-          opacity: fadeExtra,
+          opacity: fade,
         },
       ]}
     >

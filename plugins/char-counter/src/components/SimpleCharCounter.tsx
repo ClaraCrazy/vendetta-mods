@@ -20,7 +20,6 @@ const styles = stylesheet.createThemedStyleSheet({
 export default function () {
   useProxy(lastText);
   const fade = Reanimated.useSharedValue(vstorage.minChars === 0 ? 1 : 0);
-  const fadeExtra = Reanimated.useSharedValue(0);
   const [visible, setVisible] = React.useState(vstorage.minChars === 0);
 
   const curLength = lastText.value.length,
@@ -46,7 +45,7 @@ export default function () {
       style={[
         styles.container,
         !visible && { display: "none" },
-        { opacity: fadeExtra },
+        { opacity: fade },
       ]}
     >
       <Text
